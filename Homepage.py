@@ -1,117 +1,55 @@
-from tkinter import *
-#Reference purpose
-#Taken from https://www.geeksforgeeks.org/python-simple-registration-form-using-tkinter
-# defining Functions to set focus
-def focus1(event):
-    # course_field box
-    lname_field.focus_set()
+#Code Refrence and taken from https://realpython.com/python-gui-tkinter/
 
-def focus2(event):
-    # contact_no_field box
-    contact_no_field.focus_set()
+class HomePage:
+    def __init__(self):
+        self.homePageWindow = tkinter.Tk()
+        self.homePageWindow.wm_title("Summer Camp Registration System")
 
-def focus3(event):
-    # email_id_field box
-    email_id_field.focus_set()
+        tkinter.Label(self.homePageWindow, text = "Welcome To Registration Page",  width = 100).grid(pady = 20, column = 1, row = 1)
 
-def focus4(event):
-    # address_field box
-    address_field.focus_set()
+        tkinter.Button(self.homePageWindow, width = 20, text = "Insert", command = self.Insert).grid(pady = 15, column = 1, row = 2)
+        tkinter.Button(self.homePageWindow, width = 20, text = "Update", command = self.Update).grid(pady = 15, column = 1, row = 3)
+        tkinter.Button(self.homePageWindow, width = 20, text = "Search", command = self.Search).grid(pady = 15, column = 1, row = 4)
+        tkinter.Button(self.homePageWindow, width = 20, text = "Delete", command = self.Delete).grid(pady = 15, column = 1, row = 5)
+        tkinter.Button(self.homePageWindow, width = 20, text = "Display", command = self.Display).grid(pady = 15, column = 1, row = 6)
+        tkinter.Button(self.homePageWindow, width = 20, text = "Exit", command = self.homePageWindow.destroy).grid(pady = 15, column = 1, row = 7)
 
-# Defining Function for clearing the contents of text entry boxes
-def clear():
-    # to clear contents of registration form
-    fname_field.delete(0, END)
-    lname_field.delete(0, END)
-    contact_no_field.delete(0, END)
-    email_id_field.delete(0, END)
-    address_field.delete(0, END)
+        self.homePageWindow.mainloop()
 
-    # set focus on the name_field box
-    fname_field.focus_set()
+    def Insert(self):
+        self.insertWindow = InsertWindow()
+    
+    def Update(self):
+        self.updateIDWindow = tkinter.Tk()
+        self.updateIDWindow.wm_title("Update data")
 
-    # clear() function to clean all field
-    clear()
+        # Initializing all the variables
+        self.id = tkinter.StringVar()
 
+        # Label
+        tkinter.Label(self.updateIDWindow, text = "Enter the  Student dID to update", width = 50).grid(pady = 20, row = 1)
 
-# Driver code
-if __name__ == "__main__":
-    # create a GUI window
-    root = Tk()
+        # Entry widgets
+        self.idEntry = tkinter.Entry(self.updateIDWindow, width = 5, textvariable = self.id)
+        
+        self.idEntry.grid(pady = 10, row = 2)
+        
+        # Button widgets
+        tkinter.Button(self.updateIDWindow, width = 20, text = "Update", command = self.updateID).grid(pady = 10, row = 3)
 
-    # set the background colour of GUI window
-    root.configure(background='light green')
+        self.updateIDWindow.mainloop()
 
-    # set the title of GUI window
-    root.title("registration form")
+    def updateID(self):
+        self.updateWindow = UpdateWindow(self.idEntry.get())
+        self.updateIDWindow.destroy()
 
-    # set the configuration of GUI window
-    root.geometry("500x300")
+    def Search(self):
+        self.searchWindow = SearchDeleteWindow("Search")
 
+    def Delete(self):
+        self.deleteWindow = SearchDeleteWindow("Delete")
 
-    # label registration form
-    heading = Label(root, text="Summer Camp Registration", bg="light green")
-
-    # lable First Name
-    fname = Label(root, text="First Name", bg="light green")
-
-    # lable Last Name
-    lname = Label(root, text="Last Name", bg="light green")
-
-    # label Contact
-    contact_no = Label(root, text="Contact No.", bg="light green")
-
-    # label Email id
-    email_id = Label(root, text="Email id", bg="light green")
-
-    # label address
-    address = Label(root, text="Address", bg="light green")
-
-    # grid method to place form element index wise
-    heading.grid(row=0, column=1)
-    fname.grid(row=1, column=0)
-    lname.grid(row=2, column=0)
-    contact_no.grid(row=3, column=0)
-    email_id.grid(row=4, column=0)
-    address.grid(row=5, column=0)
-
-    # text entry box creation
-    # for user information input
-    fname_field = Entry(root)
-    lname_field = Entry(root)
-    contact_no_field = Entry(root)
-    email_id_field = Entry(root)
-    address_field = Entry(root)
-
-    # bind method of widget is used for
-    # the binding the function with the events
-    # whenever the enter key is pressed
-
-    # calling the focus1 function
-    fname_field.bind("<Return>", focus1)
-
-    # calling the focus2 function
-    lname_field.bind("<Return>", focus2)
-
-    # calling the focus5 function
-    contact_no_field.bind("<Return>", focus3)
-
-    #calling the focus6 function
-    email_id_field.bind("<Return>", focus4)
-
-    # grid method is used for placing
-    # the widgets at respective positions
-    # in table like structure .
-    fname_field.grid(row=1, column=1, ipadx="100")
-    lname_field.grid(row=2, column=1, ipadx="100")
-    contact_no_field.grid(row=3, column=1, ipadx="100")
-    email_id_field.grid(row=4, column=1, ipadx="100")
-    address_field.grid(row=5, column=1, ipadx="100")
-
-    # Submit Button and placing into the root window
-    submit = Button(root, text="Submit", fg="Black",
-                    bg="Blue")
-    submit.grid(row=8, column=1)
-
-    # GUI start from here
-    root.mainloop()
+    def Display(self):
+        self.database = Database()
+        self.data = self.database.Display()
+        self.displayWindow = DatabaseView(self.data)
