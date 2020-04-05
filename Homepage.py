@@ -1,5 +1,8 @@
 #Code Refrence and taken from https://realpython.com/python-gui-tkinter/
-
+import tkinter
+import tkinter.ttk
+import tkinter.messagebox
+import sqlite3
 class HomePage:
     def __init__(self):
         self.homePageWindow = tkinter.Tk()
