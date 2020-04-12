@@ -1,13 +1,9 @@
-#Reference and code taken from https://pynative.com/python-sqlite-insert-into-table/
 import tkinter
-import tkinter.ttk
-import tkinter.messagebox
 import sqlite3
-
 
 class UserDatabase:
     def __init__(self):
-        self.dbConnection = sqlite3.connect("regDBFile.db") #database file will create using name "regDBFile.db"
+        self.dbConnection = sqlite3.connect("dbfile.db") #database file will create using name "dbfile.db"
         self.dbCursor = self.dbConnection.cursor()
         self.dbCursor.execute("CREATE TABLE IF NOT EXISTS user_record (id integer PRIMARY KEY, fName text, lName text, dob text, mob text, yob text, gender text, address text, phoneNo text, emailId text, indoorGame text, OutdoorGame text)")
 
