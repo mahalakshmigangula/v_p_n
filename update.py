@@ -110,7 +110,7 @@ class UpdateData:
 
     # To Reset all form fields
     def Reset(self):
-        self.idEntry.delete(0, tkinter.END)
+        
         self.fNameEntry.delete(0, tkinter.END)
         self.lNameEntry.delete(0, tkinter.END)
         self.dobBox.set("")
