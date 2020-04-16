@@ -1,4 +1,14 @@
-#Reference and code taken from https://pynative.com/python-sqlite-insert-into-table/
+#Reference and code taken from
+# https://pynative.com/python-sqlite-insert-into-table/
+#https://www.datacamp.com/community/tutorials/gui-tkinter-python
+#https://tkdocs.com/tutorial/
+#www.edureka.co/blog/tkinter-tutorial
+#https://dzone.com/articles/python-gui-examples-tkinter-tutorial-like-geeks
+
+#Github Repository Link
+#https://github.com/mahalakshmigangula/v_p_n
+
+
 import tkinter
 import tkinter.ttk
 import tkinter.messagebox
