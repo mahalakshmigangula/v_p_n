@@ -463,8 +463,6 @@ class SearchDeleteData:
 
         # Initializing all the variables
         self.id = tkinter.StringVar()
-        self.fName = tkinter.StringVar()
-        self.lName = tkinter.StringVar()
         self.heading = "Please enter Student ID to " + task
 
         # Labels
