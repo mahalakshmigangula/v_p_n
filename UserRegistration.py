@@ -48,7 +48,7 @@ class HomePage:
         self.updateIDWindow = tkinter.Tk()
         self.updateIDWindow.wm_title("Update Data")
 
-        # Initializing all the variables
+        # Initializing id variables
         self.id = tkinter.StringVar()
 
         # Label
@@ -67,6 +67,7 @@ class HomePage:
         # update task ready to run, main loop
         self.updateIDWindow.mainloop()
 
+    #to update by id
     def updateID(self):
         self.updateWindow = UpdateData(self.idEntry.get())
         # to destroy update window after submiting data
